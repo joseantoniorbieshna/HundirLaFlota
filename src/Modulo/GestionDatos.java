@@ -28,4 +28,10 @@ public class GestionDatos {
 	public void imprimirTableroJugador() {
 		tablero.visualizarTableroVisibleJugador();
 	}
+	
+	public Tablero getTablero() {
+		return tablero;
+	}
+	
+	
 }
