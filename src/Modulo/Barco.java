@@ -5,7 +5,7 @@ import java.util.Random;
 public class Barco {
 	private int[][] boatCords;
 	
-	public void generateBoat(int[][] tablero) {
+	public void generateBoatPosition(Casilla[][] tablero) {
 		Random rand = new Random();
 		int sizeBoat=3;
 		boolean isVertical = rand.nextBoolean();  
@@ -13,11 +13,11 @@ public class Barco {
 		int x = rand.nextInt((tablero.length-3))+1;
 		int y = rand.nextInt((tablero[0].length-3))+1;
 		
-		if(isVertical) {//vertical
-			int[][] boatCords = {{x, y},{x, y+1},{x, y-1}};
+		if(!isVertical) {//Horizontal
+			int[][] boatCords = {{y, x},{y, x+1},{y, x-1}};
 			this.boatCords=boatCords;
 		}else {//horizontal
-			int[][] boatCords = {{x, y},{x+1, y},{x-1, y}};
+			int[][] boatCords = {{y, x},{y+1, x},{y-1, x}};
 			this.boatCords=boatCords;
 		}
 	}
