@@ -8,8 +8,10 @@ public class Principal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UI frame = new UI();
+					UI frame = new ParaUI();
+					UI frame2 = new ParaUI();
 					frame.setVisible(true);
+					frame2.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

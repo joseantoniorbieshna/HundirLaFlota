@@ -24,7 +24,7 @@ public class Tablero {
 	}
 	
 	public void setValorPos(int y,int x, Casilla valor) {
-		tablero[y][x] = valor;
+		this.tablero[y][x] = valor;
 	}
 	public void visualizarTablero() {
 		for(int i=0;i<tablero.length;i++) {
