@@ -7,6 +7,8 @@ public class GestionDatos {
 	private boolean hasGanado=false;
 	private static int aumentarIdJugador=1;
 	public int jugador;
+	public static Casilla[][]tableroFlotaJugador1;
+	public static Casilla[][]tableroFlotaJugador2;
 	
 	public GestionDatos() {
 		jugador=aumentarIdJugador;
@@ -15,6 +17,13 @@ public class GestionDatos {
 		//INICIAMOS TABLERO CON BARCO
 		this.barco.generateBoatPosition(this.tablero.getTablero());
 		this.tablero.setBarcoEnTablero(barco.getBoatCords());
+		
+		//SET STATIC JUGADOR
+		if(jugador==1) {
+			tableroFlotaJugador1 = this.tablero.getTablero();
+		}else {
+			tableroFlotaJugador2 = this.tablero.getTablero();
+		}
 		
 	}
 	

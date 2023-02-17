@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Modulo.Casilla;
+import Modulo.GestionDatos;
+import Modulo.Tablero;
 import vista.UI;
 
 public class ParaUI extends UI {
@@ -21,8 +23,7 @@ public class ParaUI extends UI {
 			}
 		}
 		
-		printBotonesConTablero(0);
-		
+		printBotonesConTablero();
 	}
 	
 	
@@ -33,12 +34,14 @@ public class ParaUI extends UI {
 				//COMPROBAR SI ES JUGADOR 1
 				if(control.getJugador().equalsIgnoreCase("jugador1") && control.esturnoJugador1()) {
 					control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX());
+					printBotonesMiTablero(GestionDatos.tableroFlotaJugador2);
 				}
 				if(control.getJugador().equalsIgnoreCase("jugador2") && !control.esturnoJugador1()){
 					control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX());	
+					printBotonesMiTablero(GestionDatos.tableroFlotaJugador1);
 				}
 				
-				printBotonesConTablero(0);					
+				printBotonesConTablero();					
 				if(control.decirHayGanador()) {
 					getLblMessage().setText("Felicidades has Ganados");
 				}
@@ -47,7 +50,7 @@ public class ParaUI extends UI {
 		};
 	}
 	
-	public void printBotonesConTablero(int modo) {
+	public void printBotonesConTablero() {
 		for(int y=0;y<control.getTablero().length;y++) {
 			for(int x=0;x<control.getTablero()[0].length;x++) {
 				//CAMBIO COLOR
@@ -58,8 +61,19 @@ public class ParaUI extends UI {
 					getBotones()[y][x].setBackground(Color.red);
 					getBotones()[y][x].setText("X");
 				}
-				else if(control.getTablero()[y][x]==Casilla.barco && modo==1) {
+				/*else if(control.getTablero()[y][x]==Casilla.barco && modo==1) {
 					getBotones()[y][x].setBackground(Color.green);
+				}*/
+			}
+		}
+	}
+	
+	public void printBotonesMiTablero(Casilla[][] tablero) {
+		for(int y=0;y<tablero.length;y++) {
+			for(int x=0;x<tablero[0].length;x++) {
+				//CAMBIO COLOR
+				if(tablero[y][x]==Casilla.barco ) {
+					getbotonesNoInteractivos()[y][x].setBackground(Color.green);
 				}
 			}
 		}

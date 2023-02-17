@@ -14,9 +14,11 @@ public class Controlador {
 	public void hacerMovimiento(int y,int x) {
 		gestion.hacerMovimiento(y, x);
 	}
+	
 	public boolean decirHayGanador() {
 		return gestion.getHasGanado();
 	}
+	
 	public String getJugador() {
 		if(gestion.getJugador()==1) {
 			return "Jugador1";
