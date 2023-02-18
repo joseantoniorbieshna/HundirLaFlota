@@ -3,7 +3,7 @@ package controlador;
 import Modulo.Casilla;
 import Modulo.GestionDatos;
 
-public class ControladorTableroTurno {
+public class Controlador {
 
 	GestionDatos gestion = new GestionDatos();
 	

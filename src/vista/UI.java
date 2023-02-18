@@ -40,14 +40,14 @@ public class UI extends JFrame {
 		panel.setLayout(new GridLayout(11, 11, 0, 0));
 		//Panel Has Ganado
 		lblMessage = new JLabel("");
-		lblMessage.setForeground(new Color(0, 100, 0));
-		lblMessage.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblMessage.setForeground(new Color(0, 128, 0));
+		lblMessage.setFont(new Font("Arial", Font.BOLD, 20));
 		lblMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMessage.setBounds(0, 472, 636, 50);
 		contentPane.add(lblMessage);
 		//Titulo
 		lblTitle = new JLabel("HUNDIR LA FLOTA");
-		lblTitle.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblTitle.setFont(new Font("Arial", Font.BOLD, 20));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setBounds(0, 0, 636, 50);
 		contentPane.add(lblTitle);
@@ -73,12 +73,12 @@ public class UI extends JFrame {
 		contentPane.add(lblNewLabel2);
 		//Texto JugadorActual
 		lblJugador = new JLabel("Jugador");
-		lblJugador.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblJugador.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblJugador.setHorizontalAlignment(SwingConstants.LEFT);
-		lblJugador.setBounds(10, 29, 107, 43);
+		lblJugador.setBounds(10, 29, 127, 43);
 		contentPane.add(lblJugador);
 		
-		lbDecirTurno = new JLabel("");
+		lbDecirTurno = new JLabel("Empieza Jugador 1");
 		lbDecirTurno.setForeground(new Color(0, 128, 0));
 		lbDecirTurno.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lbDecirTurno.setHorizontalAlignment(SwingConstants.CENTER);

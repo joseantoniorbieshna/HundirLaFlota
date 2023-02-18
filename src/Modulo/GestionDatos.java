@@ -4,9 +4,9 @@ public class GestionDatos {
 	private Tablero tablero = new Tablero();
 	private Barco barco = new Barco();
 	private static int turno=0;
-	private boolean hasGanado=false;
 	private static int aumentarIdJugador=1;
 	public int jugador;
+	private boolean hasGanado=false;
 	public static Casilla[][]tableroFlotaJugador1;
 	public static Casilla[][]tableroFlotaJugador2;
 	

@@ -10,7 +10,7 @@ import Modulo.Tablero;
 import vista.UI;
 
 public class ParaUI extends UI {
-	ControladorTableroTurno control = new ControladorTableroTurno();
+	Controlador control = new Controlador();
 	ActionListener comportamientoBoton;
 	public ParaUI() {
 		super();
@@ -26,7 +26,7 @@ public class ParaUI extends UI {
 		
 	}
 	
-	
+	//ACTION LISTENER(COMPORTAMIENTO BOTON)
 	public void setComportamientoBoton() {
 		this.comportamientoBoton = new ActionListener() {
 			@Override
@@ -37,7 +37,9 @@ public class ParaUI extends UI {
 						&& control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX())) {
 					
 					Principal.frameJugador2.getLbDecirTurno().setText("TURNO");
-					Principal.frameJugador1.getLbDecirTurno().setText("");
+					Principal.frameJugador2.getLbDecirTurno().setForeground(new Color(0, 128, 0));
+					Principal.frameJugador1.getLbDecirTurno().setText("ESPERA TURNO");
+					Principal.frameJugador1.getLbDecirTurno().setForeground(new Color(0, 64, 255));
 					
 					printBotonesMiTablero(GestionDatos.tableroFlotaJugador2);
 					
@@ -46,7 +48,9 @@ public class ParaUI extends UI {
 						&& control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX()) ){
 					
 					Principal.frameJugador1.getLbDecirTurno().setText("TURNO");
-					Principal.frameJugador2.getLbDecirTurno().setText("");
+					Principal.frameJugador1.getLbDecirTurno().setForeground(new Color(0, 128, 0));
+					Principal.frameJugador2.getLbDecirTurno().setText("ESPERA TURNO");
+					Principal.frameJugador2.getLbDecirTurno().setForeground(new Color(0, 64, 255));
 					printBotonesMiTablero(GestionDatos.tableroFlotaJugador1);
 					
 				}
@@ -62,6 +66,7 @@ public class ParaUI extends UI {
 		};
 	}
 	
+	//IMPRIMIR TABLERO PARA JUGAR
 	public void printBotonesConTablero() {
 		for(int y=0;y<control.getTablero().length;y++) {
 			for(int x=0;x<control.getTablero()[0].length;x++) {
@@ -80,6 +85,7 @@ public class ParaUI extends UI {
 		}
 	}
 	
+	//IMPRIMIR TABLERO INVISIBLE PARA EL OTRO JUGADOR
 	public void printBotonesMiTablero(Casilla[][] tablero) {
 		for(int y=0;y<tablero.length;y++) {
 			for(int x=0;x<tablero[0].length;x++) {
