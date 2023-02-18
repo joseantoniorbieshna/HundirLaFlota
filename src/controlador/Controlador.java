@@ -31,4 +31,11 @@ public class Controlador {
 		return gestion.turnoJugador1();
 	}
 	
+	public boolean soyJugador1YesMiTurno() {
+		return (getJugador().equalsIgnoreCase("jugador 1") && esturnoJugador1());
+	}
+	public boolean soyJugador2YesMiTurno() {
+		return (getJugador().equalsIgnoreCase("jugador 2") && !esturnoJugador1());
+	}
+	
 }

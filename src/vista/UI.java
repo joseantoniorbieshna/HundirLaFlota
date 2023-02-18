@@ -57,20 +57,19 @@ public class UI extends JFrame {
 		contentPane.add(panelVista);
 		panelVista.setLayout(new GridLayout(11, 11, 0, 0));
 		
-		
-		//Texto Para mi tablero
-		JLabel lblNewLabel = new JLabel("(Invisible para el otro Jugador)");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(0, 541, 636, 26);
-		contentPane.add(lblNewLabel);
-		//TEXTO 2 PARA MI TABLERO
 		//Texto Para mi tablero
 		JLabel lblNewLabel2 = new JLabel("MI TABLERO");
 		lblNewLabel2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel2.setBounds(0, 519, 636, 26);
 		contentPane.add(lblNewLabel2);
+		
+		//TEXTO 2 PARA MI TABLERO
+		JLabel lblNewLabel = new JLabel("(Invisible para el otro Jugador)");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 541, 636, 26);
+		contentPane.add(lblNewLabel);
 		//Texto JugadorActual
 		lblJugador = new JLabel("Jugador");
 		lblJugador.setFont(new Font("Tahoma", Font.BOLD, 16));

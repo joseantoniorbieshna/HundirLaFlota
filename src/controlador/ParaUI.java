@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import Modulo.Casilla;
 import Modulo.GestionDatos;
-import Modulo.Tablero;
 import vista.UI;
 
 public class ParaUI extends UI {
@@ -32,32 +31,21 @@ public class ParaUI extends UI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//COMPROBAR SI ES JUGADOR 1
-				if(control.getJugador().equalsIgnoreCase("jugador 1") && control.esturnoJugador1()
-						//Y hacer movimiento es igual a true
-						&& control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX())) {
-					
-					Principal.frameJugador2.getLbDecirTurno().setText("TURNO");
-					Principal.frameJugador2.getLbDecirTurno().setForeground(new Color(0, 128, 0));
-					Principal.frameJugador1.getLbDecirTurno().setText("ESPERA TURNO");
-					Principal.frameJugador1.getLbDecirTurno().setForeground(new Color(0, 64, 255));
-					
-					printBotonesMiTablero(GestionDatos.tableroFlotaJugador2);
-					
-				}
-				if(control.getJugador().equalsIgnoreCase("jugador 2") && !control.esturnoJugador1()
-						&& control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX()) ){
-					
-					Principal.frameJugador1.getLbDecirTurno().setText("TURNO");
-					Principal.frameJugador1.getLbDecirTurno().setForeground(new Color(0, 128, 0));
-					Principal.frameJugador2.getLbDecirTurno().setText("ESPERA TURNO");
-					Principal.frameJugador2.getLbDecirTurno().setForeground(new Color(0, 64, 255));
-					printBotonesMiTablero(GestionDatos.tableroFlotaJugador1);
-					
-				}
+				hacerMovimiento(control.soyJugador1YesMiTurno(),e,Principal.frameJugador2, Principal.frameJugador1);
+				hacerMovimiento(control.soyJugador2YesMiTurno(),e,Principal.frameJugador1, Principal.frameJugador2);
+
+				printBotonesConTablero();	
 				
-				printBotonesConTablero();					
 				if(control.decirHayGanador()) {
 					getLblMessage().setText(control.getJugador()+". FELICIDADES HAS GANADO!!");
+					if(control.soyJugador1YesMiTurno()) {
+						Principal.frameJugador2.getLblMessage().setText("JUGADOR 2. HAS PERDIDO!!");
+						Principal.frameJugador2.getLblMessage().setForeground(new Color(255,0,0));
+					}
+					if(control.soyJugador2YesMiTurno()) {
+						Principal.frameJugador1.getLblMessage().setText("JUGADOR 2. HAS PERDIDO!!");
+						Principal.frameJugador1.getLblMessage().setForeground(new Color(255,0,0));
+					}
 					Principal.frameJugador1.getLbDecirTurno().setText("");
 					Principal.frameJugador2.getLbDecirTurno().setText("");
 				}
@@ -90,10 +78,26 @@ public class ParaUI extends UI {
 		for(int y=0;y<tablero.length;y++) {
 			for(int x=0;x<tablero[0].length;x++) {
 				//CAMBIO COLOR
-				if(tablero[y][x]==Casilla.barco ) {
+				if(tablero[y][x]==Casilla.barco || tablero[y][x]==Casilla.hitBarco) {
 					getbotonesNoInteractivos()[y][x].setBackground(Color.green);
 				}
 			}
+		}
+	}
+	public void hacerMovimiento(boolean eresJugador,ActionEvent e,ParaUI paraTurno, ParaUI paraEsperarTurno) {
+		if(eresJugador
+				&& control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX())) {
+			
+			paraTurno.getLbDecirTurno().setText("TURNO");
+			paraTurno.getLbDecirTurno().setForeground(new Color(0, 128, 0));
+			paraEsperarTurno.getLbDecirTurno().setText("ESPERA TURNO");
+			paraEsperarTurno.getLbDecirTurno().setForeground(new Color(0, 64, 255));
+			
+			if(control.getJugador().equalsIgnoreCase("Jugador 1"))
+				printBotonesMiTablero(GestionDatos.tableroFlotaJugador2);
+			if(control.getJugador().equalsIgnoreCase("Jugador 2"))
+				printBotonesMiTablero(GestionDatos.tableroFlotaJugador1);
+			
 		}
 	}
 	
