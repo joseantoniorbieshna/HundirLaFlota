@@ -37,13 +37,13 @@ public class ParaUI extends UI {
 				printBotonesConTablero();	
 				
 				if(control.decirHayGanador()) {
-					getLblMessage().setText(control.getJugador()+". FELICIDADES HAS GANADO!!");
+					getLblMessage().setText("FELICIDADES HAS GANADO!!");
 					if(control.soyJugador1YesMiTurno()) {
-						Principal.frameJugador2.getLblMessage().setText("JUGADOR 2. HAS PERDIDO!!");
+						Principal.frameJugador2.getLblMessage().setText("HAS PERDIDO!!");
 						Principal.frameJugador2.getLblMessage().setForeground(new Color(255,0,0));
 					}
 					if(control.soyJugador2YesMiTurno()) {
-						Principal.frameJugador1.getLblMessage().setText("JUGADOR 2. HAS PERDIDO!!");
+						Principal.frameJugador1.getLblMessage().setText("HAS PERDIDO!!");
 						Principal.frameJugador1.getLblMessage().setForeground(new Color(255,0,0));
 					}
 					Principal.frameJugador1.getLbDecirTurno().setText("");
