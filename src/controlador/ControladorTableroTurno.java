@@ -3,7 +3,7 @@ package controlador;
 import Modulo.Casilla;
 import Modulo.GestionDatos;
 
-public class Controlador {
+public class ControladorTableroTurno {
 
 	GestionDatos gestion = new GestionDatos();
 	
@@ -11,8 +11,8 @@ public class Controlador {
 		return gestion.getTablero().getTablero();
 	}
 	
-	public void hacerMovimiento(int y,int x) {
-		gestion.hacerMovimiento(y, x);
+	public boolean hacerMovimiento(int y,int x) {
+		return gestion.hacerMovimiento(y, x);
 	}
 	
 	public boolean decirHayGanador() {
@@ -21,9 +21,9 @@ public class Controlador {
 	
 	public String getJugador() {
 		if(gestion.getJugador()==1) {
-			return "Jugador1";
+			return "JUGADOR 1";
 		}else {
-			return "Jugador2";
+			return "JUGADOR 2";
 		}
 	}
 	

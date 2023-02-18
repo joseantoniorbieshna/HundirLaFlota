@@ -11,6 +11,7 @@ import controlador.MyButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Color;
 
 
 public class UI extends JFrame {
@@ -20,46 +21,71 @@ public class UI extends JFrame {
 	private JButton[][] botonesNoInteractivos = new JButton[11][11];
 	private JLabel lblMessage;
 	private JLabel lblTitle;
-	private JLabel lblNewLabel;
+	private JLabel lblJugador;
+	private JLabel lbDecirTurno;
 
 	public UI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 50, 653, 985);
+		setBounds(100, 25, 653, 992);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Panel botones
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 72, 636, 374);
+		panel.setBounds(0, 87, 636, 374);
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(11, 11, 0, 0));
-		
+		//Panel Has Ganado
 		lblMessage = new JLabel("");
+		lblMessage.setForeground(new Color(0, 100, 0));
 		lblMessage.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblMessage.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMessage.setBounds(0, 443, 636, 58);
+		lblMessage.setBounds(0, 472, 636, 50);
 		contentPane.add(lblMessage);
-		
+		//Titulo
 		lblTitle = new JLabel("HUNDIR LA FLOTA");
 		lblTitle.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setBounds(10, 11, 617, 50);
+		lblTitle.setBounds(0, 0, 636, 50);
 		contentPane.add(lblTitle);
-		
+		//Panel mi tablero
 		JPanel panelVista = new JPanel();
 		panelVista.setBounds(0, 571, 636, 374);
 		contentPane.add(panelVista);
 		panelVista.setLayout(new GridLayout(11, 11, 0, 0));
 		
-		lblNewLabel = new JLabel("MI TABLERO");
+		
+		//Texto Para mi tablero
+		JLabel lblNewLabel = new JLabel("(Invisible para el otro Jugador)");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 541, 636, 26);
 		contentPane.add(lblNewLabel);
+		//TEXTO 2 PARA MI TABLERO
+		//Texto Para mi tablero
+		JLabel lblNewLabel2 = new JLabel("MI TABLERO");
+		lblNewLabel2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel2.setBounds(0, 519, 636, 26);
+		contentPane.add(lblNewLabel2);
+		//Texto JugadorActual
+		lblJugador = new JLabel("Jugador");
+		lblJugador.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblJugador.setHorizontalAlignment(SwingConstants.LEFT);
+		lblJugador.setBounds(10, 29, 107, 43);
+		contentPane.add(lblJugador);
 		
+		lbDecirTurno = new JLabel("");
+		lbDecirTurno.setForeground(new Color(0, 128, 0));
+		lbDecirTurno.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lbDecirTurno.setHorizontalAlignment(SwingConstants.CENTER);
+		lbDecirTurno.setBounds(202, 61, 206, 26);
+		contentPane.add(lbDecirTurno);
 		
+		//Botones
 		for(int y=0;y<botones.length;y++) {
 			for(int x=0;x<botones[0].length;x++) {
 				botones[y][x] = new MyButton("",y, x);
@@ -84,4 +110,14 @@ public class UI extends JFrame {
 	public JLabel getLblMessage() {
 		return lblMessage;
 	}
+
+	public JLabel getLblJugador() {
+		return lblJugador;
+	}
+
+	public JLabel getLbDecirTurno() {
+		return lbDecirTurno;
+	}
+	
+	
 }

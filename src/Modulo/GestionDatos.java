@@ -21,26 +21,33 @@ public class GestionDatos {
 		//SET STATIC JUGADOR
 		if(jugador==1) {
 			tableroFlotaJugador1 = this.tablero.getTablero();
-		}else {
+		}else if(jugador==2) {
 			tableroFlotaJugador2 = this.tablero.getTablero();
 		}
 		
 	}
 	
 	
-	public void hacerMovimiento(int y,int x) {
+	public boolean hacerMovimiento(int y,int x) {
+		boolean hiceMovimiento=false;
 		Casilla casillaSeleccionada = tablero.getValorPos(y, x);
 		//SI CASILLA ES BARCO O AGUA CAMBIAR A HIT
 		if(casillaSeleccionada==Casilla.barco && !hasGanado) {
 			tablero.setValorPos(y, x, Casilla.hitBarco);
 			hasGanado=tablero.comprobarHasCaidoBarco();
-			turno++;
+			hiceMovimiento=true;
 		}else if(casillaSeleccionada==Casilla.agua && !hasGanado) {
 			tablero.setValorPos(y, x, Casilla.hitAgua);
 			hasGanado=tablero.comprobarHasCaidoBarco();
+			hiceMovimiento=true;
+		}
+		
+		if(!hasGanado && hiceMovimiento) {
 			turno++;
 		}
+		return hiceMovimiento;
 	}
+	
 	public boolean getHasGanado() {
 		return hasGanado;
 	}
@@ -48,9 +55,11 @@ public class GestionDatos {
 	public Tablero getTablero() {
 		return tablero;
 	}
+	
 	public int getJugador() {
 		return this.jugador;
 	}
+	
 	public boolean turnoJugador1() {
 		return turno%2==0;
 	}

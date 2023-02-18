@@ -10,11 +10,10 @@ import Modulo.Tablero;
 import vista.UI;
 
 public class ParaUI extends UI {
-	Controlador control = new Controlador();
+	ControladorTableroTurno control = new ControladorTableroTurno();
 	ActionListener comportamientoBoton;
 	public ParaUI() {
 		super();
-		
 		setComportamientoBoton();
 		//SETEO EL COMPORTAMIENTO DE LOS BOTONES
 		for(int y=0;y<getBotones().length;y++){
@@ -22,8 +21,9 @@ public class ParaUI extends UI {
 				getBotones()[y][x].addActionListener(comportamientoBoton);
 			}
 		}
-		
+		getLblJugador().setText(control.getJugador());
 		printBotonesConTablero();
+		
 	}
 	
 	
@@ -32,18 +32,30 @@ public class ParaUI extends UI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//COMPROBAR SI ES JUGADOR 1
-				if(control.getJugador().equalsIgnoreCase("jugador1") && control.esturnoJugador1()) {
-					control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX());
+				if(control.getJugador().equalsIgnoreCase("jugador 1") && control.esturnoJugador1()
+						//Y hacer movimiento es igual a true
+						&& control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX())) {
+					
+					Principal.frameJugador2.getLbDecirTurno().setText("TURNO");
+					Principal.frameJugador1.getLbDecirTurno().setText("");
+					
 					printBotonesMiTablero(GestionDatos.tableroFlotaJugador2);
+					
 				}
-				if(control.getJugador().equalsIgnoreCase("jugador2") && !control.esturnoJugador1()){
-					control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX());	
+				if(control.getJugador().equalsIgnoreCase("jugador 2") && !control.esturnoJugador1()
+						&& control.hacerMovimiento(((MyButton)e.getSource()).getPosY(), ((MyButton)e.getSource()).getPosX()) ){
+					
+					Principal.frameJugador1.getLbDecirTurno().setText("TURNO");
+					Principal.frameJugador2.getLbDecirTurno().setText("");
 					printBotonesMiTablero(GestionDatos.tableroFlotaJugador1);
+					
 				}
 				
 				printBotonesConTablero();					
 				if(control.decirHayGanador()) {
-					getLblMessage().setText("Felicidades has Ganados");
+					getLblMessage().setText(control.getJugador()+". FELICIDADES HAS GANADO!!");
+					Principal.frameJugador1.getLbDecirTurno().setText("");
+					Principal.frameJugador2.getLbDecirTurno().setText("");
 				}
 				
 			}
